@@ -15,7 +15,7 @@ class ConfigActivity : DebugActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.config)
-        supportActionBar?.title = "Jaba";
+        supportActionBar?.title = "Configurações";
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 

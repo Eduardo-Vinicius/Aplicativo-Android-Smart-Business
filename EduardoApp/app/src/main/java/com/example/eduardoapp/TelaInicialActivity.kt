@@ -114,7 +114,7 @@ class TelaInicialActivity : DebugActivity() {
 
                     Toast.makeText(this, "Atualizando conteúdo da tela...", Toast.LENGTH_LONG).show()
                     
-                }, 3000
+                }, 10000
             )
             Toast.makeText(this, "Atualizando conteúdo da tela", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_config) {
