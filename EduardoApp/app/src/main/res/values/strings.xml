@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Bem Vindo ao Bike Na Porta</string>
+    <string name="mensagem_inicial">Faça seu Login:
+    </string>
+    <string name="mensagem_dois">Salve Quebrada</string>
+    <string name="msg_login">Usuário</string>
+    <string name="msg_senha">Senha</string>
+    <string name="action_buscar"> Buscar </string>>
+    <string name="action_atualizar">Atualizar</string>
+    <string name="action_config">Configurar</string>
+</resources>

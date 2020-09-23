@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lblLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="Faça seu login"
+        android:textSize="25dp"
+        android:textColor="#12D90A"
+        android:gravity="center_vertical|right"
+        android:layout_gravity="center"
+        />
+
+
+    <TextView
+        android:id="@+id/textoUm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+         />
+
+
+
+
+    <EditText
+        android:id="@+id/txtLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Digite nome do Usuário:"/>
+
+    <TextView
+        android:id="@+id/lblSenha"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+
+        android:textSize="15dp"/>
+
+    <EditText
+        android:id="@+id/txtSenha"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Digite a senha:" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+
+    </FrameLayout>
+    <ImageView
+        android:id="@+id/campoImagem"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+
+
+        />
+</LinearLayout>

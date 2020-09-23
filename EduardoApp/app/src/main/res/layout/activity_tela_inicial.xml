@@ -1,0 +1,50 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TelaInicialActivity">
+    <include layout="@layout/toolbar"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:outlineAmbientShadowColor="@color/colorAccent"
+        android:outlineSpotShadowColor="@color/colorAccent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:splitMotionEvents="false">
+
+
+        <TextView
+            android:id="@+id/mensagemInicial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu Inicial" />
+        <Button
+            android:id="@+id/cadastroCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cadastro Cliente" />
+        <Button
+            android:id="@+id/cadastroBicicleta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cadastro Bicicleta"/>
+        <Button
+        android:id="@+id/cadastroUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastro Usuario" />
+    </LinearLayout>
+</LinearLayout>
