@@ -1,50 +1,93 @@
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMenuLateral"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".TelaInicialActivity">
-    <include layout="@layout/toolbar"/>
+    android:fitsSystemWindows="true">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:outlineAmbientShadowColor="@color/colorAccent"
-        android:outlineSpotShadowColor="@color/colorAccent"
-        />
+    <!--Conteúdo da tela - omitido-->
+    <!--Menu lateral-->
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- Colocar cardview com as disciplinas-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFuncionarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
+<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        tools:context=".TelaInicialActivity">-->
+
+<!--    <include layout="@layout/toolbar" />-->
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="16dp"-->
+<!--        android:splitMotionEvents="false">-->
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:outlineAmbientShadowColor="@color/colorAccent"
+            android:outlineSpotShadowColor="@color/colorAccent"
+            />
+<!--        <TextView-->
+<!--            android:id="@+id/mensagemInicial"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Menu Inicial" />-->
+<!--        <Button-->
+<!--            android:id="@+id/cadastroCliente"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Cadastro Cliente" />-->
+<!--        <Button-->
+<!--            android:id="@+id/cadastroBicicleta"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Cadastro Bicicleta"/>-->
+<!--        <Button-->
+<!--            android:id="@+id/cadastroUsuario"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Cadastro Usuario" />-->
+<!--    </LinearLayout>-->
+<!--    </ScrollView>-->
+<!--    </LinearLayout>-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/menu_lateral"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:splitMotionEvents="false">
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/menu_lateral_cabecalho"
+        app:menu="@menu/menu_lateral">
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>
 
-
-        <TextView
-            android:id="@+id/mensagemInicial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Menu Inicial" />
-        <Button
-            android:id="@+id/cadastroCliente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastro Cliente" />
-        <Button
-            android:id="@+id/cadastroBicicleta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastro Bicicleta"/>
-        <Button
-        android:id="@+id/cadastroUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cadastro Usuario" />
-    </LinearLayout>
-</LinearLayout>

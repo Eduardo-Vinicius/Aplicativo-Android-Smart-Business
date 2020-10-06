@@ -1,6 +1,7 @@
 package com.example.eduardoapp
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,72 +11,130 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.login_constraint.*
 
 
-class TelaInicialActivity : DebugActivity() {
+class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-
+    private val context: Context get() = this
+    private var funcionarios = listOf<Funcionario>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
-
-
-
         val args = intent.extras
         val nome = args?.getString("nome_usuario")
-        //val num = args?.getInt("numero")
 
-
-        cadastroBicicleta.setOnClickListener() {
-
-            var intent = Intent(this, CadastroActivity::class.java)
-            intent.putExtra("nome_tela", "Cadastro de Bicicleta")
-            startActivityForResult(intent, 0)
-
-
-
-        }
-        cadastroCliente.setOnClickListener() {
-
-            var intent = Intent(this, CadastroActivity::class.java)
-            intent.putExtra("nome_tela", "Cadastro de Cliente")
-            startActivityForResult(intent, 0)
-
-
-
-
-        }
-
-        cadastroUsuario.setOnClickListener() {
-
-            var intent = Intent(this, CadastroActivity::class.java)
-            intent.putExtra("nome_tela", "Cadastro de Usuário")
-            startActivityForResult(intent, 0)
-
-        }
-
-        // Toast.makeText(this,"Usuário: $nome", Toast.LENGTH_LONG).show()
-
-
-         setSupportActionBar(toolbar)
-
+        setSupportActionBar(toolbar)
         supportActionBar?.title = "Bike Na Porta"
-         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        configuraMenuLateral()
+
+        recyclerFuncionarios?.layoutManager = LinearLayoutManager(context)
+        recyclerFuncionarios?.itemAnimator = DefaultItemAnimator()
+        recyclerFuncionarios?.setHasFixedSize(true)
+
+         val num = args?.getInt("numero")
 
 
+//        cadastroBicicleta.setOnClickListener() {
+//
+//            var intent = Intent(this, CadastroActivity::class.java)
+//            intent.putExtra("nome_tela", "Cadastro de Bicicleta")
+//            startActivityForResult(intent, 0)
+//
+//
+//
+//        }
+//        cadastroCliente.setOnClickListener() {
+//
+//            var intent = Intent(this, CadastroActivity::class.java)
+//            intent.putExtra("nome_tela", "Cadastro de Cliente")
+//            startActivityForResult(intent, 0)
+//
+//
+//
+//
+//        }
+//
+//        cadastroUsuario.setOnClickListener() {
+//
+//            var intent = Intent(this, CadastroActivity::class.java)
+//            intent.putExtra("nome_tela", "Cadastro de Usuário")
+//            startActivityForResult(intent, 0)
+//
+//     }
 
-
+     Toast.makeText(this,"Usuário: $nome", Toast.LENGTH_LONG).show()
+}
+        override fun onResume() {
+            super.onResume()
+    // task para recuperar as disciplinas
+            taskFuncionarios()
     }
+        fun taskFuncionarios() {
+            funcionarios = FuncionarioService.getFuncionarios(context)
+            // atualizar lista
+            recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) {onClickFuncionario(it)}
+        }
+        // tratamento do evento de clicar em uma disciplina
+        fun onClickFuncionario(f: Funcionario) {
+            Toast.makeText(context, "Clicou no Funcionário: ${f.nome}", Toast.LENGTH_SHORT)
+                .show()
+            val intent = Intent(context, FuncionarioActivity::class.java)
+            intent.putExtra("Funcionário:", f)
+            startActivity(intent)
+        }
+
+    private fun configuraMenuLateral() {
+        var toogle = ActionBarDrawerToggle(
+            this,
+            layoutMenuLateral,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_closed)
+        layoutMenuLateral.addDrawerListener(toogle)
+        toogle.syncState()
+        menu_lateral.setNavigationItemSelectedListener(this)
+    }
+
     fun cliqueSair() {
         val returnIntent = Intent();
         returnIntent.putExtra("result","Saída do BrewerApp");
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
+    }
+
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_bicicleta -> {
+                Toast.makeText(this, "Clicou Bicicletas", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_config -> {
+                Toast.makeText(this, "Clicou Configurações", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_funcionario -> {
+                Toast.makeText(this, "Clicou Funcionários", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        layoutMenuLateral.closeDrawer(GravityCompat.START)
+        return true
+
+    }
+
+
+    fun showText(text: String){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
     // método sobrescrito para inflar o menu na Actionbar
@@ -86,7 +145,7 @@ class TelaInicialActivity : DebugActivity() {
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
-                // ação enquanto está digitando
+                showText(newText)
                 return false
             }
 
@@ -113,7 +172,7 @@ class TelaInicialActivity : DebugActivity() {
                     progressBar.visibility = View.GONE
 
                     Toast.makeText(this, "Atualizando conteúdo da tela...", Toast.LENGTH_LONG).show()
-                    
+
                 }, 10000
             )
             Toast.makeText(this, "Atualizando conteúdo da tela", Toast.LENGTH_LONG).show()
