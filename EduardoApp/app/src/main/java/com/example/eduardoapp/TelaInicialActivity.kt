@@ -16,10 +16,12 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_tela_funcionario.*
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.login_constraint.*
+import kotlinx.android.synthetic.main.activity_tela_inicial.recyclerFuncionarios as recyclerFuncionarios1
 
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -108,7 +110,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun cliqueSair() {
         val returnIntent = Intent();
-        returnIntent.putExtra("result","Saída do BrewerApp");
+        returnIntent.putExtra("result","Saída do BikeNaPorta");
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
     }
@@ -118,12 +120,25 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         when (item.itemId) {
             R.id.nav_bicicleta -> {
                 Toast.makeText(this, "Clicou Bicicletas", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this, CadastroActivity::class.java)
+                intent.putExtra("nome_tela", "Cadastro de Bicicleta")
+                startActivityForResult(intent, 0)
             }
             R.id.nav_config -> {
                 Toast.makeText(this, "Clicou Configurações", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this, ConfigActivity::class.java)
+                intent.putExtra("nome_tela", "Configurações")
+                startActivityForResult(intent, 0)
             }
             R.id.nav_funcionario -> {
                 Toast.makeText(this, "Clicou Funcionários", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this, FuncionarioActivity::class.java)
+                intent.putExtra("nome_tela", "Cadastro de Bicicleta")
+                startActivityForResult(intent, 0)
+            }
+            R.id.nav_sair -> {
+                Toast.makeText(this, "Clicou em Sair", Toast.LENGTH_SHORT).show()
+                cliqueSair()
             }
 
         }

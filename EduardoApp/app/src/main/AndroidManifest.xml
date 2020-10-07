@@ -15,9 +15,10 @@
 <!--        <activity android:name=".TelaInicialActivity"-->
 <!--        android:theme="@style/AppTheme.Toolbar"></activity>-->
         <activity android:name=".DebugActivity" />
-        <activity android:name=".FuncionarioActivity" />
         <activity android:name=".DrawerActivity" android:theme="@style/AppTheme.Toolbar"></activity>
-
+        <activity android:name=".FuncionarioActivity"
+            android:theme="@style/AppTheme.Toolbar"
+            android:parentActivityName=".TelaInicialActivity"></activity>
         <activity android:name=".ConfigActivity"/>
         <activity android:name=".CadastroActivity"/>
         <activity android:name=".TelaInicialActivity"  android:theme="@style/AppTheme.Toolbar"/>

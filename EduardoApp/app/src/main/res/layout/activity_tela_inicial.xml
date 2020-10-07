@@ -27,19 +27,18 @@
         </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
 
-<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--        xmlns:tools="http://schemas.android.com/tools"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:context=".TelaInicialActivity">-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".TelaInicialActivity">
 
-<!--    <include layout="@layout/toolbar" />-->
+    <include layout="@layout/toolbar" />
 <!--    <ScrollView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent">-->
-
 
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -79,7 +78,7 @@
 <!--            android:text="Cadastro Usuario" />-->
 <!--    </LinearLayout>-->
 <!--    </ScrollView>-->
-<!--    </LinearLayout>-->
+    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/menu_lateral"
         android:layout_width="wrap_content"
