@@ -132,8 +132,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             }
             R.id.nav_funcionario -> {
                 Toast.makeText(this, "Clicou Funcionários", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this, FuncionarioActivity::class.java)
-                intent.putExtra("nome_tela", "Cadastro de Bicicleta")
+                var intent = Intent(this, CadastroActivity::class.java)
+                intent.putExtra("nome_tela", "Cadastro de Funcionários")
                 startActivityForResult(intent, 0)
             }
             R.id.nav_sair -> {
