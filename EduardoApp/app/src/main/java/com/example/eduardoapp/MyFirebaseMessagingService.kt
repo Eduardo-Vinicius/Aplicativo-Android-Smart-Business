@@ -1,0 +1,36 @@
+package com.example.eduardoapp
+
+import android.app.Notification
+import android.content.Intent
+import android.util.Log
+import com.example.eduardoapp.NotificationUtil.create
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
+
+class MyFirebaseMessagingService: FirebaseMessagingService() {
+
+    override fun onNewToken(token: String?) {
+        super.onNewToken(token)
+        Prefs.setString("FB_TOKEN", token!!)
+        Log.d("firebase", token!!)
+    }
+
+    override fun onMessageReceived(mensagemRemota: RemoteMessage?) {
+        if (mensagemRemota?.notification != null) {
+            val titulo = mensagemRemota?.notification?.title
+            val corpo = mensagemRemota?.notification?.body
+
+            Log.d("firebase", titulo!!)
+            Log.d("firebase", corpo!!)
+            showNotification(mensagemRemota)
+        }
+    }
+
+    private fun showNotification(mensagemRemota: RemoteMessage?) {
+        val intent = Intent(this, TelaInicialActivity::class.java)
+        val titulo = mensagemRemota?.notification?.title
+        val corpo = mensagemRemota?.notification?.body
+
+        NotificationUtil.create(1, intent, titulo!!, corpo!!)
+    }
+}

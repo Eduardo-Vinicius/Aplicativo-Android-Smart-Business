@@ -57,7 +57,11 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Digite a senha:" />
-
+    <CheckBox
+        android:id="@+id/checkLembrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lembrar login" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -87,4 +91,6 @@
 
 
         />
+
+
 </LinearLayout>

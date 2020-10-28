@@ -12,8 +12,7 @@ import com.squareup.picasso.Picasso
 
 class FuncionarioAdapter (
     val funcionarios: List<Funcionario>,
-    val onClick: (Funcionario) -> Unit):
-    RecyclerView.Adapter<FuncionarioAdapter.FuncionarioViewHolder>() {
+    val onClick: (Funcionario) -> Unit): RecyclerView.Adapter<FuncionarioAdapter.FuncionarioViewHolder>() {
     // ViewHolder com os elementos da tela
     class FuncionarioViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val cardNome: TextView
@@ -24,7 +23,7 @@ class FuncionarioAdapter (
             cardNome = view.findViewById<TextView>(R.id.cardNome)
             cardImg = view.findViewById<ImageView>(R.id.cardImg)
             cardProgress = view.findViewById<ProgressBar>(R.id.cardProgress)
-            cardView = view.findViewById<CardView>(R.id.card_funcionarios)
+            cardView = view.findViewById<CardView>(R.id.card_disciplinas)
         }
     }
     // Quantidade de disciplinas na lista

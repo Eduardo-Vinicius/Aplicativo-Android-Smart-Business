@@ -15,4 +15,6 @@
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_closed">Close</string>
+    <string name="action_cadastrar">Cadastrar</string>
+    <string name="action_remover">Remover</string>
 </resources>

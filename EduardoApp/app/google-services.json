@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "574741749719",
+    "firebase_url": "https://bike-na-porta.firebaseio.com",
+    "project_id": "bike-na-porta",
+    "storage_bucket": "bike-na-porta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574741749719:android:b91cb1e6e4e3f5c82cf592",
+        "android_client_info": {
+          "package_name": "com.example.eduardoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574741749719-jufcq1gu6nc4l3ducaksc6mi2t9s9j61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv1YuhNaUliO9dCSnEhWxSit4XUDK1bp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574741749719-jufcq1gu6nc4l3ducaksc6mi2t9s9j61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

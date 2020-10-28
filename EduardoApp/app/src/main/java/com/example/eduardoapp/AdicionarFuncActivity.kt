@@ -1,12 +1,13 @@
 package com.example.eduardoapp
 
 import android.os.Bundle
+import android.os.Debug
 import kotlinx.android.synthetic.main.toolbar.*
 
-class CadastroActivity : DebugActivity() {
+class AdicionarFuncActivity : DebugActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.cadastro)
+        setContentView(R.layout.activity_adicionar_funcionario)
 
         val args = intent.extras
         val nome = args?.getString("nome_tela")
@@ -14,7 +15,4 @@ class CadastroActivity : DebugActivity() {
         supportActionBar?.title = nome;
 
     }
-
-
-
 }

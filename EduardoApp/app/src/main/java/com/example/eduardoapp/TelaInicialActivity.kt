@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -26,7 +27,10 @@ import kotlinx.android.synthetic.main.activity_tela_inicial.recyclerFuncionarios
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
     private val context: Context get() = this
+    private var users = listOf<Login>()
     private var funcionarios = listOf<Funcionario>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +38,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         setContentView(R.layout.activity_tela_inicial)
         val args = intent.extras
         val nome = args?.getString("nome_usuario")
+
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Bike Na Porta"
@@ -75,25 +80,45 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 //
 //     }
 
-     Toast.makeText(this,"Usuário: $nome", Toast.LENGTH_LONG).show()
+        val nome1 = Prefs.getString("nome")
+        Toast.makeText(this, nome1, Toast.LENGTH_LONG).show()
+
+
+        Toast.makeText(this,"Usuário: $nome1", Toast.LENGTH_LONG).show()
 }
         override fun onResume() {
             super.onResume()
     // task para recuperar as disciplinas
             taskFuncionarios()
     }
+
+        fun enviaNotificacao(funcionario: Funcionario) {
+            val intent = Intent(this, FuncionarioActivity::class.java)
+            intent.putExtra("disciplina", funcionario)
+            NotificationUtil.create(1, intent, "BNPApp", "You are hired! ${funcionario.nome}")
+        }
         fun taskFuncionarios() {
-            funcionarios = FuncionarioService.getFuncionarios(context)
-            // atualizar lista
-            recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) {onClickFuncionario(it)}
+            Thread {
+
+                funcionarios = FuncionarioService.getFuncionarios(context)
+                runOnUiThread {
+                    // Toast.makeText(context, "Clicou no funcionário ${funcionarios}", Toast.LENGTH_SHORT).show()
+
+                    recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
+                    enviaNotificacao(this.funcionarios[0])
+                }
+            }.start()
         }
         // tratamento do evento de clicar em uma disciplina
         fun onClickFuncionario(f: Funcionario) {
-            Toast.makeText(context, "Clicou no Funcionário: ${f.nome}", Toast.LENGTH_SHORT)
-                .show()
+//            Toast.makeText(context, "Clicou no Funcionário: ${f.nome}", Toast.LENGTH_SHORT)
+//                .show()
+
+
+            Toast.makeText(context, "Clicou no funcionário ${f.nome}", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, FuncionarioActivity::class.java)
-            intent.putExtra("Funcionário:", f)
-            startActivity(intent)
+            intent.putExtra("disciplina", f)
+            startActivityForResult(intent, REQUEST_REMOVE)
         }
 
     private fun configuraMenuLateral() {
@@ -132,14 +157,16 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             }
             R.id.nav_funcionario -> {
                 Toast.makeText(this, "Clicou Funcionários", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this, CadastroActivity::class.java)
-                intent.putExtra("nome_tela", "Cadastro de Funcionários")
-                startActivityForResult(intent, 0)
+                //var intent = Intent(this, NovoFuncionarioActivity::class.java)
+                // intent.putExtra("nome_tela", "Cadastro de Funcionários")
+
+                //startActivityForResult(intent, 0)
             }
             R.id.nav_sair -> {
                 Toast.makeText(this, "Clicou em Sair", Toast.LENGTH_SHORT).show()
                 cliqueSair()
             }
+
 
         }
         layoutMenuLateral.closeDrawer(GravityCompat.START)
@@ -147,7 +174,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de disciplinas
+            taskFuncionarios()
+        }
+    }
     fun showText(text: String){
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
@@ -185,10 +217,10 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             Handler().postDelayed(
                 {
                     progressBar.visibility = View.GONE
-
+                    taskFuncionarios()
                     Toast.makeText(this, "Atualizando conteúdo da tela...", Toast.LENGTH_LONG).show()
 
-                }, 10000
+                }, 3000
             )
             Toast.makeText(this, "Atualizando conteúdo da tela", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_config) {
@@ -196,10 +228,16 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             startActivityForResult(intent, 0)
             Toast.makeText(this, "Botão de configuracoes", Toast.LENGTH_LONG).show()
         }
+        else if (id == R.id.action_cadastrar) {
+            var intent = Intent(this, NovoFuncionarioActivity::class.java)
+            startActivityForResult(intent, REQUEST_CADASTRO)
+            Toast.makeText(this, "Botão de Adicionar", Toast.LENGTH_LONG).show()
+            }
         // botão up navigation
         else if (id == android.R.id.home) {
             finish()
         }
+
         return super.onOptionsItemSelected(item)
     }
 }

@@ -7,6 +7,11 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_buscar_white"
         />
+    <item android:id="@+id/action_cadastrar"
+        android:title="@string/action_cadastrar"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_adicionar_white"
+        />
     <item android:id="@+id/action_atualizar"
         android:icon="@drawable/ic_atualizar_white"
         android:title="@string/action_atualizar"
@@ -16,4 +21,5 @@
         android:title="@string/action_config"
         app:showAsAction="never"
         />
+
 </menu>
