@@ -95,7 +95,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         fun enviaNotificacao(funcionario: Funcionario) {
             val intent = Intent(this, FuncionarioActivity::class.java)
             intent.putExtra("disciplina", funcionario)
-            NotificationUtil.create(1, intent, "BNPApp", "You are hired! ${funcionario.nome}")
+            NotificationUtil.create(1, intent, "BNPApp", "Você tem uma nova atividade, ${funcionario.nome}.")
         }
         fun taskFuncionarios() {
             Thread {
