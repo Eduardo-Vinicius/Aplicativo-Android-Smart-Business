@@ -14,6 +14,10 @@
             android:icon="@drawable/ic_config"
             android:title="@string/nav_config" />
 
+        <item android:id="@+id/nav_localizacao"
+            android:icon="@drawable/ic_config"
+            android:title="Localização" />
+
         <item android:id="@+id/nav_sair"
             android:icon="@drawable/ic_sair"
             android:title="@string/nav_sair" />
