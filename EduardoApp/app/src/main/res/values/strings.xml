@@ -7,7 +7,7 @@
     <string name="action_buscar"> Buscar </string>>
     <string name="action_atualizar">Atualizar </string>
     <string name="action_config">Configurar </string>
-    <string name="nav_funcionarios">Funcionários </string>
+    <string name="nav_funcionarios">Clientes </string>
     <string name="nav_bicicleta">Bicicleta </string>
     <string name="nav_config">Configurações </string>
     <string name="nav_sair">Sair </string>

@@ -95,7 +95,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         fun enviaNotificacao(funcionario: Funcionario) {
             val intent = Intent(this, FuncionarioActivity::class.java)
             intent.putExtra("disciplina", funcionario)
-            NotificationUtil.create(1, intent, "BNPApp", "Você tem uma nova atividade, ${funcionario.nome}.")
+            NotificationUtil.create(1, intent, "Bike Na Porta", "Você tem uma nova notificação, ${funcionario.nome}.")
         }
         fun taskFuncionarios() {
             Thread {
@@ -115,7 +115,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 //                .show()
 
 
-            Toast.makeText(context, "Clicou no funcionário ${f.nome}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Clicou no cliente ${f.nome}", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, FuncionarioActivity::class.java)
             intent.putExtra("disciplina", f)
             startActivityForResult(intent, REQUEST_REMOVE)
@@ -145,7 +145,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         when (item.itemId) {
             R.id.nav_bicicleta -> {
                 Toast.makeText(this, "Clicou Bicicletas", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this, CadastroActivity::class.java)
+                var intent = Intent(this, TelaBicicletaActivity::class.java)
                 intent.putExtra("nome_tela", "Cadastro de Bicicleta")
                 startActivityForResult(intent, 0)
             }
@@ -156,6 +156,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 startActivityForResult(intent, 0)
             }
             R.id.nav_funcionario -> {
+                var intent = Intent(this, NovoFuncionarioActivity::class.java)
+                startActivityForResult(intent, REQUEST_CADASTRO)
                 Toast.makeText(this, "Clicou Funcionários", Toast.LENGTH_SHORT).show()
                 //var intent = Intent(this, NovoFuncionarioActivity::class.java)
                 // intent.putExtra("nome_tela", "Cadastro de Funcionários")

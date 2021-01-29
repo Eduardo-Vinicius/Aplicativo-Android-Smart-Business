@@ -20,4 +20,9 @@ object DatabaseManager {
         return dbInstance.funcionarioDAO()
     }
 
+    fun getBicicletaDAO(): BicicletaDAO {
+        return dbInstance.bicicletaDAO()
+    }
+
+
 }

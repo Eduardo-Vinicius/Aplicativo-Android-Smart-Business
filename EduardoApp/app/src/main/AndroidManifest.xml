@@ -42,6 +42,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BicicletaActivity"
+            android:theme="@style/AppTheme.Toolbar"
+            android:parentActivityName=".TelaInicialActivity"></activity>
+        <activity android:name=".TelaBicicletaActivity"
+            android:theme="@style/AppTheme.Toolbar"
+            android:parentActivityName=".TelaInicialActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -72,6 +78,9 @@
             android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".NovoFuncionarioActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".NovaBikeActivity"
             android:theme="@style/AppTheme.Toolbar" />
         <activity android:name=".MainActivity">
             <intent-filter>

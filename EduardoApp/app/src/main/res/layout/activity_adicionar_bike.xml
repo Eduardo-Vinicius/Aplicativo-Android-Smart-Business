@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="132dp"
-        android:text="Cliente:"
+        android:text="Bicicleta:"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtFuncionario"
+        android:id="@+id/txtBicicleta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="132dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtEmenta"
+        android:id="@+id/txtCor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.865"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFuncionario" />
+        app:layout_constraintTop_toBottomOf="@+id/txtBicicleta" />
 
     <TextView
         android:id="@+id/lblCargo"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="104dp"
-        android:text="CPF:"
+        android:text="Cor:"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/txtEmenta"
         app:layout_constraintHorizontal_bias="0.096"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lblFuncionario" />
 
     <Button
-        android:id="@+id/btnCadastrarFunc"
+        android:id="@+id/btnCadastrarBike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="112dp"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFoto" />
 
     <EditText
-        android:id="@+id/txtFoto"
+        android:id="@+id/txtFotoBike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="61dp"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmenta" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCor" />
 
     <TextView
         android:id="@+id/textView7"
@@ -86,7 +86,7 @@
         android:layout_marginTop="76dp"
         android:text="Foto"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/txtFoto"
+        app:layout_constraintEnd_toStartOf="@+id/txtCor"
         app:layout_constraintHorizontal_bias="0.809"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCargo" />
